@@ -28,14 +28,14 @@
         "illuminate/contracts": "^10.0|^11.0"
     },
     "require-dev": {
-        "larastan/larastan": "^2.6",
         "laravel/pint": "^1.0",
         "nunomaduro/collision": "^7.0|^8.0",
+        "larastan/larastan": "^2.6",
         "orchestra/testbench": "^v8.9.1|^v9.0.0",
-        "pestphp/pest": "^2.34",
+        "pestphp/pest": "^v2.24.3",
+        "phpunit/phpunit": "^10",
         "pestphp/pest-plugin-laravel": "^2.2",
         "pestphp/pest-plugin-livewire": "^2.1",
-        "phpunit/phpunit": "^10",
         "sinnbeck/laravel-dom-assertions": "^1.3",
         "spatie/laravel-ray": "^1.31"
     },
@@ -72,6 +72,6 @@
             ]
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",  
     "prefer-stable": true
 }
