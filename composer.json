@@ -72,6 +72,6 @@
             ]
         }
     },
-    "minimum-stability": "stable",  // Alterado para stable
+    "minimum-stability": "stable",  
     "prefer-stable": true
 }
