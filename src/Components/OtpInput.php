@@ -26,7 +26,18 @@ class OtpInput extends Field implements Contracts\CanBeLengthConstrained, Contra
     protected bool | \Closure | null $isRtl = false;
 
     protected string | \Closure | null $type = 'number';
+    protected bool | \Closure | null $clearOnEnter = false;
 
+    public function clearOnEnter(bool | \Closure $condition = true): static
+    {
+        $this->clearOnEnter = $condition;
+        return $this;
+    }
+    
+    public function shouldClearOnEnter(): bool
+    {
+        return $this->evaluate($this->clearOnEnter);
+    }
     public function numberInput(int | \Closure $number = 4):static
     {
         $this->numberInput = $number;

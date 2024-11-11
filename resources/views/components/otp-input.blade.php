@@ -131,6 +131,7 @@
         @endforeach
     </div>
 </div>
+
 </x-dynamic-component>
 
 <style>
