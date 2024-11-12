@@ -19,7 +19,7 @@
     $isRtl = $getInputsContainerDirection();
 @endphp
 @php
-    $height = $getHeight();
+$height = $getHeight();
     $width = $getWidth();
 
     // Constrói o atributo de estilo condicionalmente
@@ -29,8 +29,6 @@
     }
     if ($width !== null) {
         $style .= "width: {$width}; ";
-    }else{
-
     }
 @endphp
 <x-dynamic-component
@@ -108,11 +106,11 @@
     },
 }">
 <div class="flex flex-row items-center space-x-4" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
-  <!-- Primeiro Grupo de 3 Inputs -->
-  <div class="flex items-center gap-2 ">
-            @foreach(range(1, 3) as $column)
-            <x-filament::input.wrapper
-                :disabled="$isDisabled"
+    <!-- Primeiro Grupo de 3 Inputs -->
+    <div class="flex items-center gap-2 ">
+        @foreach(range(1, 3) as $column)
+        <x-filament::input.wrapper
+        :disabled="$isDisabled"
                 :inline-prefix="$isPrefixInline"
                 :inline-suffix="$isSuffixInline"
                 :prefix="$prefixLabel"
@@ -127,31 +125,33 @@
                 :attributes="
                     \Filament\Support\prepare_inherited_attributes($getExtraAttributeBag())
                     ->class(['fi-fo-text-input overflow-hidden'])
-                "
-            >
+                ">
                 <input
-                {{$isDisabled ? 'disabled' : ''}}
+                    {{$isDisabled ? 'disabled' : ''}}
                     type="{{$inputType}}"
                     maxlength="1"
-                         style="height: {{ $height }}; width: {{ $width }};"
                     x-ref="{{$column}}"
-                       style=   "height: {{ $height }}; width: {{ $width }};"
+                      style=   "height: {{ $height }}; width: {{ $width }};"
                     autocomplete="{{$autocomplete}}"
                     class="fi-input fi-otp-input block w-full border-none py-3 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
                     x-on:input="handleInput($event, {{$column}})"
                     x-on:paste="handlePaste($event)"
                     x-on:keydown.backspace="handleBackspace($event)"
                     x-on:keydown.enter="handleEnter($event)"
-                />
+                /> 
             </x-filament::input.wrapper>
         @endforeach
     </div>
-        <!-- Traço Separador -->
-        <span class="text-gray-500 px-3">-</span>
-        <div class="flex items-center gap-2">
+
+    <!-- Traço Separador -->
+    <span class="text-gray-500 px-3">-</span>
+
+    <!-- Segundo Grupo de 3 Inputs -->
+    <div class="flex items-center gap-2">
         @foreach(range(4, 6) as $column)
-            <x-filament::input.wrapper
-                :disabled="$isDisabled"
+           
+        <x-filament::input.wrapper
+        :disabled="$isDisabled"
                 :inline-prefix="$isPrefixInline"
                 :inline-suffix="$isSuffixInline"
                 :prefix="$prefixLabel"
@@ -167,30 +167,32 @@
                     \Filament\Support\prepare_inherited_attributes($getExtraAttributeBag())
                     ->class(['fi-fo-text-input overflow-hidden'])
                 "
-            >
+        >
                 <input
-                {{$isDisabled ? 'disabled' : ''}}
+                    {{$isDisabled ? 'disabled' : ''}}
                     type="{{$inputType}}"
-                    maxlength="1"
+                    maxlength="1" 
                     x-ref="{{$column}}"
-                                 style="height: {{ $height }}; width: {{ $width }};"
-                         style="height: {{ $height }}; width: {{ $width }};"
+                      style="height: {{ $height }}; width: {{ $width }};"
                     autocomplete="{{$autocomplete}}"
                     class="fi-input fi-otp-input block w-full border-none py-3 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
                     x-on:input="handleInput($event, {{$column}})"
                     x-on:paste="handlePaste($event)"
                     x-on:keydown.backspace="handleBackspace($event)"
                     x-on:keydown.enter="handleEnter($event)"
-                />
+                /> 
             </x-filament::input.wrapper>
         @endforeach
-        </div>
-         <!-- Traço Separador -->
-     <span class="text-gray-500 py-4  px-3">-</span>
-     <div class="flex items-center gap-2">
-     @foreach(range(7, 9) as $column)
-            <x-filament::input.wrapper
-                :disabled="$isDisabled"
+    </div>
+
+    <!-- Traço Separador -->
+    <span class="text-gray-500 py-4  px-3">-</span>
+
+    <!-- Terceiro Grupo de 3 Inputs -->
+    <div class="flex items-center gap-2">
+        @foreach(range(7, 9) as $column)
+        <x-filament::input.wrapper
+        :disabled="$isDisabled"
                 :inline-prefix="$isPrefixInline"
                 :inline-suffix="$isSuffixInline"
                 :prefix="$prefixLabel"
@@ -206,26 +208,28 @@
                     \Filament\Support\prepare_inherited_attributes($getExtraAttributeBag())
                     ->class(['fi-fo-text-input overflow-hidden'])
                 "
-            >
+        >
                 <input
-                {{$isDisabled ? 'disabled' : ''}}
+                    {{$isDisabled ? 'disabled' : ''}}
                     type="{{$inputType}}"
                     maxlength="1"
                     x-ref="{{$column}}"
-                                 style="height: {{ $height }}; width: {{ $width }};"
-                         style="height: {{ $height }}; width: {{ $width }};"
                     autocomplete="{{$autocomplete}}"
+                      style="height: {{ $height }}; width: {{ $width }};"
                     class="fi-input fi-otp-input block w-full border-none py-3 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
                     x-on:input="handleInput($event, {{$column}})"
                     x-on:paste="handlePaste($event)"
                     x-on:keydown.backspace="handleBackspace($event)"
                     x-on:keydown.enter="handleEnter($event)"
-                />
+                /> 
             </x-filament::input.wrapper>
         @endforeach
-     </div>
-    
+    </div>
 </div>
+
+    
+    </div>
+
 </x-dynamic-component>
 
 <style>
