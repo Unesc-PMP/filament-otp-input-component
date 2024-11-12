@@ -93,9 +93,10 @@
         }
     },
 }">
-    <div class="flex justify-between gap-6 fi-otp-input-container" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
-
-        @foreach(range(1, $numberInput) as $column)
+<div class="flex flex-row items-center space-x-4" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
+  <!-- Primeiro Grupo de 3 Inputs -->
+  <div class="flex items-center gap-2 ">
+            @foreach(range(1, 3) as $column)
             <x-filament::input.wrapper
                 :disabled="$isDisabled"
                 :inline-prefix="$isPrefixInline"
@@ -115,13 +116,12 @@
                 "
             >
                 <input
-                    {{$isDisabled ? 'disabled' : ''}}
+                {{$isDisabled ? 'disabled' : ''}}
                     type="{{$inputType}}"
                     maxlength="1"
                     x-ref="{{$column}}"
-                
                     autocomplete="{{$autocomplete}}"
-                //    class="fi-input fi-otp-input block w-full border-none py-1.5 text-base text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 disabled:[-webkit-text-fill-color:theme(colors.gray.500)] disabled:placeholder:[-webkit-text-fill-color:theme(colors.gray.400)] dark:text-white dark:placeholder:text-gray-500 dark:disabled:text-gray-400 dark:disabled:[-webkit-text-fill-color:theme(colors.gray.400)] dark:disabled:placeholder:[-webkit-text-fill-color:theme(colors.gray.500)] sm:text-sm sm:leading-6 bg-white/0 ps-3 pe-3 text-center"
+                    class="fi-input fi-otp-input block w-full border-none py-3 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
                     x-on:input="handleInput($event, {{$column}})"
                     x-on:paste="handlePaste($event)"
                     x-on:keydown.backspace="handleBackspace($event)"
@@ -130,8 +130,82 @@
             </x-filament::input.wrapper>
         @endforeach
     </div>
+        <!-- Traço Separador -->
+        <span class="text-gray-500 px-3">-</span>
+        <div class="flex items-center gap-2">
+        @foreach(range(4, 6) as $column)
+            <x-filament::input.wrapper
+                :disabled="$isDisabled"
+                :inline-prefix="$isPrefixInline"
+                :inline-suffix="$isSuffixInline"
+                :prefix="$prefixLabel"
+                :prefix-actions="$prefixActions"
+                :prefix-icon="$prefixIcon"
+                :prefix-icon-color="$getPrefixIconColor()"
+                :suffix="$suffixLabel"
+                :suffix-actions="$suffixActions"
+                :suffix-icon="$suffixIcon"
+                :suffix-icon-color="$getSuffixIconColor()"
+                :valid="! $errors->has($statePath)"
+                :attributes="
+                    \Filament\Support\prepare_inherited_attributes($getExtraAttributeBag())
+                    ->class(['fi-fo-text-input overflow-hidden'])
+                "
+            >
+                <input
+                {{$isDisabled ? 'disabled' : ''}}
+                    type="{{$inputType}}"
+                    maxlength="1"
+                    x-ref="{{$column}}"
+                    autocomplete="{{$autocomplete}}"
+                    class="fi-input fi-otp-input block w-full border-none py-3 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
+                    x-on:input="handleInput($event, {{$column}})"
+                    x-on:paste="handlePaste($event)"
+                    x-on:keydown.backspace="handleBackspace($event)"
+                    x-on:keydown.enter="handleEnter($event)"
+                />
+            </x-filament::input.wrapper>
+        @endforeach
+        </div>
+         <!-- Traço Separador -->
+     <span class="text-gray-500 py-4  px-3">-</span>
+     <div class="flex items-center gap-2">
+     @foreach(range(7, 9) as $column)
+            <x-filament::input.wrapper
+                :disabled="$isDisabled"
+                :inline-prefix="$isPrefixInline"
+                :inline-suffix="$isSuffixInline"
+                :prefix="$prefixLabel"
+                :prefix-actions="$prefixActions"
+                :prefix-icon="$prefixIcon"
+                :prefix-icon-color="$getPrefixIconColor()"
+                :suffix="$suffixLabel"
+                :suffix-actions="$suffixActions"
+                :suffix-icon="$suffixIcon"
+                :suffix-icon-color="$getSuffixIconColor()"
+                :valid="! $errors->has($statePath)"
+                :attributes="
+                    \Filament\Support\prepare_inherited_attributes($getExtraAttributeBag())
+                    ->class(['fi-fo-text-input overflow-hidden'])
+                "
+            >
+                <input
+                {{$isDisabled ? 'disabled' : ''}}
+                    type="{{$inputType}}"
+                    maxlength="1"
+                    x-ref="{{$column}}"
+                    autocomplete="{{$autocomplete}}"
+                    class="fi-input fi-otp-input block w-full border-none py-3 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
+                    x-on:input="handleInput($event, {{$column}})"
+                    x-on:paste="handlePaste($event)"
+                    x-on:keydown.backspace="handleBackspace($event)"
+                    x-on:keydown.enter="handleEnter($event)"
+                />
+            </x-filament::input.wrapper>
+        @endforeach
+     </div>
+    
 </div>
-
 </x-dynamic-component>
 
 <style>
