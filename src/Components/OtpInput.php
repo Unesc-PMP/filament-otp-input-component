@@ -46,31 +46,6 @@ class OtpInput extends Field implements Contracts\CanBeLengthConstrained, Contra
     {
         return $this->evaluate($this->height);
     }
-//
-    public function getWidth(): string
-    {
-        return $this->evaluate($this->width);
-    }
-
-    protected string | \Closure | null $height = '100%';
-    protected string | \Closure | null $width = '100%';
-
-    public function height(string | \Closure $height): static
-    {
-        $this->height = $height;
-        return $this;
-    }
-
-    public function width(string | \Closure $width): static
-    {
-        $this->width = $width;
-        return $this;
-    }
-
-    public function getHeight(): string
-    {
-        return $this->evaluate($this->height);
-    }
 
     public function getWidth(): string
     {

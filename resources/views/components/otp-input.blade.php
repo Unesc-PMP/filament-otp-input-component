@@ -33,21 +33,6 @@
 
     }
 @endphp
-@php
-    $height = $getHeight();
-    $width = $getWidth();
-
-    // Constrói o atributo de estilo condicionalmente
-    $style = '';
-    if ($height !== null) {
-        $style .= "height: {$height}; ";
-    }
-    if ($width !== null) {
-        $style .= "width: {$width}; ";
-    }else{
-
-    }
-@endphp
 <x-dynamic-component
     :component="$getFieldWrapperView()"
     :id="$getId()"
