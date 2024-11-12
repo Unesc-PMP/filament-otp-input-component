@@ -33,6 +33,21 @@
 
     }
 @endphp
+@php
+    $height = $getHeight();
+    $width = $getWidth();
+
+    // Constrói o atributo de estilo condicionalmente
+    $style = '';
+    if ($height !== null) {
+        $style .= "height: {$height}; ";
+    }
+    if ($width !== null) {
+        $style .= "width: {$width}; ";
+    }else{
+
+    }
+@endphp
 <x-dynamic-component
     :component="$getFieldWrapperView()"
     :id="$getId()"
@@ -133,6 +148,7 @@
                 {{$isDisabled ? 'disabled' : ''}}
                     type="{{$inputType}}"
                     maxlength="1"
+                         style="height: {{ $height }}; width: {{ $width }};"
                     x-ref="{{$column}}"
                        style=   "height: {{ $height }}; width: {{ $width }};"
                     autocomplete="{{$autocomplete}}"
@@ -173,6 +189,7 @@
                     maxlength="1"
                     x-ref="{{$column}}"
                                  style="height: {{ $height }}; width: {{ $width }};"
+                         style="height: {{ $height }}; width: {{ $width }};"
                     autocomplete="{{$autocomplete}}"
                     class="fi-input fi-otp-input block w-full border-none py-3 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
                     x-on:input="handleInput($event, {{$column}})"
@@ -211,6 +228,7 @@
                     maxlength="1"
                     x-ref="{{$column}}"
                                  style="height: {{ $height }}; width: {{ $width }};"
+                         style="height: {{ $height }}; width: {{ $width }};"
                     autocomplete="{{$autocomplete}}"
                     class="fi-input fi-otp-input block w-full border-none py-3 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
                     x-on:input="handleInput($event, {{$column}})"
