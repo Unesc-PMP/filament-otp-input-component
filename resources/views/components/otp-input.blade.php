@@ -34,6 +34,8 @@
         $alignmentClass = 'justify-end';
     }
 @endphp
+
+<div class="flex {{$alignmentClass}} items-center w-full">
 <x-dynamic-component
     :component="$getFieldWrapperView()"
     :id="$getId()"
@@ -108,7 +110,7 @@
         }
     },
 }">
-<div class="flex flex-row items-center space-x-4 {{ $alignmentClass }}" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
+<div class="flex flex-row items-center space-x-4" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
     <!-- Primeiro Grupo de 3 Inputs -->
     <div class="flex items-center gap-1 md:gap-2 ">
         @foreach(range(1, 3) as $column)
@@ -233,7 +235,7 @@
     </div>
 
 </x-dynamic-component>
-
+</div>
 <style>
     input.fi-otp-input[type=number] {
         -webkit-appearance: textfield;
