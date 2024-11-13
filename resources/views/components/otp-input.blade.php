@@ -107,7 +107,7 @@ $height = $getHeight();
 }">
 <div class="flex flex-row items-center space-x-4" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
     <!-- Primeiro Grupo de 3 Inputs -->
-    <div class="flex items-center gap-2 ">
+    <div class="flex items-center gap-1 md:gap-2 ">
         @foreach(range(1, 3) as $column)
         <x-filament::input.wrapper
         :disabled="$isDisabled"
@@ -131,9 +131,9 @@ $height = $getHeight();
                     type="{{$inputType}}"
                     maxlength="1"
                     x-ref="{{$column}}"
-                      style=   "height: {{ $height }}; width: {{ $width }};"
+                     
                     autocomplete="{{$autocomplete}}"
-                    class="fi-input fi-otp-input block w-full border-none py-3 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
+                    class="fi-input fi-otp-input responsive-input block w-full border-none  p-0 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
                     x-on:input="handleInput($event, {{$column}})"
                     x-on:paste="handlePaste($event)"
                     x-on:keydown.backspace="handleBackspace($event)"
@@ -144,10 +144,10 @@ $height = $getHeight();
     </div>
 
     <!-- Traço Separador -->
-    <span class="text-gray-500 px-3">-</span>
+    <div class="text-gray-500 span-separete ">-</div>
 
     <!-- Segundo Grupo de 3 Inputs -->
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-1 md:gap-2 ">
         @foreach(range(4, 6) as $column)
            
         <x-filament::input.wrapper
@@ -173,9 +173,8 @@ $height = $getHeight();
                     type="{{$inputType}}"
                     maxlength="1" 
                     x-ref="{{$column}}"
-                      style="height: {{ $height }}; width: {{ $width }};"
                     autocomplete="{{$autocomplete}}"
-                    class="fi-input fi-otp-input block w-full border-none py-3 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
+                    class="fi-input fi-otp-input responsive-input block w-full border-none p-0 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
                     x-on:input="handleInput($event, {{$column}})"
                     x-on:paste="handlePaste($event)"
                     x-on:keydown.backspace="handleBackspace($event)"
@@ -186,10 +185,10 @@ $height = $getHeight();
     </div>
 
     <!-- Traço Separador -->
-    <span class="text-gray-500 py-4  px-3">-</span>
+    <div class="text-gray-500 span-separete">-</div>
 
     <!-- Terceiro Grupo de 3 Inputs -->
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-1 md:gap-2">
         @foreach(range(7, 9) as $column)
         <x-filament::input.wrapper
         :disabled="$isDisabled"
@@ -215,8 +214,8 @@ $height = $getHeight();
                     maxlength="1"
                     x-ref="{{$column}}"
                     autocomplete="{{$autocomplete}}"
-                      style="height: {{ $height }}; width: {{ $width }};"
-                    class="fi-input fi-otp-input block w-full border-none py-3 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
+                     
+                    class="fi-input fi-otp-input responsive-input block w-full border-none  p-0 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
                     x-on:input="handleInput($event, {{$column}})"
                     x-on:paste="handlePaste($event)"
                     x-on:keydown.backspace="handleBackspace($event)"
@@ -246,5 +245,25 @@ $height = $getHeight();
         -moz-appearance: none;
         appearance: none;
         margin: 0
+    }
+    .responsive-input {
+        height: {{ $height ?? '40px' }};
+        width: {{ $width ?? '40px' }};
+        
+    }
+    .span-separete{
+            padding: 0 10px;
+        }
+    /* Estilos para dispositivos móveis (largura de tela de até 768px) */
+    @media (max-width: 768px) {
+        .span-separete{
+            padding: 0 5px;
+        }
+        .responsive-input {
+           text-align: center; /* Centraliza o texto */
+            height: 40px; /* Altura menor para dispositivos móveis */
+            width:100%;  /* Largura menor para dispositivos móveis */
+            margin: 0 2px; /* Espaçamento para garantir alinhamento */
+        }
     }
 </style>
