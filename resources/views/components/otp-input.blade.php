@@ -19,16 +19,19 @@
     $isRtl = $getInputsContainerDirection();
 @endphp
 @php
-$height = $getHeight();
+    // Obtém a altura e a largura do campo de entrada
+    $height = $getHeight();
     $width = $getWidth();
 
-    // Constrói o atributo de estilo condicionalmente
-    $style = '';
-    if ($height !== null) {
-        $style .= "height: {$height}; ";
-    }
-    if ($width !== null) {
-        $style .= "width: {$width}; ";
+    //Adicionar alinha do otp
+    $align = $getAlign(); // Recebe a propriedade de alinhamento
+    $alignmentClass = '';
+    if ($align === 'left') {
+        $alignmentClass = 'justify-start';
+    } elseif ($align === 'center') {
+        $alignmentClass = 'justify-center';
+    } elseif ($align === 'right') {
+        $alignmentClass = 'justify-end';
     }
 @endphp
 <x-dynamic-component
@@ -105,7 +108,7 @@ $height = $getHeight();
         }
     },
 }">
-<div class="flex flex-row items-center space-x-4" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
+<div class="flex flex-row items-center space-x-4 {{ $alignmentClass }}" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
     <!-- Primeiro Grupo de 3 Inputs -->
     <div class="flex items-center gap-1 md:gap-2 ">
         @foreach(range(1, 3) as $column)

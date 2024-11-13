@@ -30,6 +30,19 @@ class OtpInput extends Field implements Contracts\CanBeLengthConstrained, Contra
     protected string | \Closure | null $height = '100%';
     protected string | \Closure | null $width = '100%';
 
+    protected string | \Closure | null $align = 'left';
+
+    public function align(string | \Closure $align): static
+    {
+        $this->align = $align;
+        return $this;
+    }
+
+    public function getAlign(): string
+    {
+        return $this->evaluate($this->align);
+    }
+    
     public function height(string | \Closure $height): static
     {
         $this->height = $height;
