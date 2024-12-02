@@ -100,7 +100,7 @@
     },
 
     handleEnter(e) {
-        if (e.key === 'Enter' && this.clearOnEnter) {
+        if (e.key === 'Enter') {
             Array.from(Array(this.length), (element, i) => {
                 const el = this.$refs[(i + 1)];
                 if (el) el.value = '';
