@@ -19,6 +19,8 @@
     $isRtl = $getInputsContainerDirection();
 @endphp
 @php
+
+
     // Obtém a altura e a largura do campo de entrada
     $height = $getHeight();
     $width = $getWidth();
@@ -74,7 +76,10 @@
             this.$refs[i+1].focus();
             this.$refs[i+1].select();
         }
-        if(i == this.length  && this.clearOnEnter){
+        // Se o último campo foi preenchido e a opção clearOnEnter for false, então limpa o campo
+        if(i == this.length 
+         && 
+        this.clearOnEnter == true ){
             @this.set('{{ $getStatePath() }}', this.state)
         }
     },
