@@ -74,7 +74,7 @@
             this.$refs[i+1].focus();
             this.$refs[i+1].select();
         }
-        if(i == this.length){
+        if(i == this.length  && !this.clearOnEnter){
             @this.set('{{ $getStatePath() }}', this.state)
         }
     },

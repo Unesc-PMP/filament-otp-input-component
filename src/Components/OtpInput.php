@@ -26,7 +26,7 @@ class OtpInput extends Field implements Contracts\CanBeLengthConstrained, Contra
     protected bool | \Closure | null $isRtl = false;
 
     protected string | \Closure | null $type = 'number';
-    protected bool | \Closure | null $clearOnEnter = false;
+    protected bool | \Closure | null $clearOnEnter = true;
     protected string | \Closure | null $height = '100%';
     protected string | \Closure | null $width = '100%';
 
