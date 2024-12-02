@@ -78,7 +78,7 @@
             @this.set('{{ $getStatePath() }}', this.state)
         }
     },
-
+    /// Função para colar o valor do clipboard
     handlePaste(e) {
         const paste = e.clipboardData.getData('text');
         this.value = paste;
