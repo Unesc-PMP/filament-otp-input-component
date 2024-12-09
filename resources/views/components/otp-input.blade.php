@@ -55,7 +55,7 @@
     length: {{$numberInput}},
     autoFocus: '{{$isAutofocused}}',
     type: '{{$inputType}}',
-    clearOnEnter: {{ $shouldClearOnEnter() ? 'true' : 'false' }},
+    clearOnEnter: {{ $shouldClearOnEnter() ? 'false' : 'true' }},
     init: function(){
         if (this.autoFocus){
             this.$refs[1].focus();
@@ -79,7 +79,7 @@
         // Se o último campo foi preenchido e a opção clearOnEnter for false, então limpa o campo
         if(i == this.length 
          && 
-        !this.clearOnEnter){
+        this.clearOnEnter){
             @this.set('{{ $getStatePath() }}', this.state)
         }
     },
