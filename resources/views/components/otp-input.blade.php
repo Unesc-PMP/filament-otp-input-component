@@ -263,9 +263,9 @@
         margin: 0
     }
     .responsive-input {
-        height: {{ $height ?? '40px' }};
-           width: 100%;
-    max-width: 45px; /* limite de largura por input */
+        height: {{ '60px'?? '40px' }};
+        width: 100%;
+        max-width: 45px; /* limite de largura por input */
 
     }
     .span-separete{
