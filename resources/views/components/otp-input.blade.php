@@ -37,7 +37,7 @@
     }
 @endphp
 
-<div class="flex {{$alignmentClass}} items-center w-full">
+<div class="flex {{$alignmentClass}} items-center ">
 <x-dynamic-component
     :component="$getFieldWrapperView()"
     :id="$getId()"
@@ -77,8 +77,8 @@
             this.$refs[i+1].select();
         }
         // Se o último campo foi preenchido e a opção clearOnEnter for false, então limpa o campo
-        if(i == this.length 
-         && 
+        if(i == this.length
+         &&
         !this.clearOnEnter){
             @this.set('{{ $getStatePath() }}', this.state)
         }
@@ -115,9 +115,15 @@
         }
     },
 }">
-<div class="flex flex-row items-center space-x-4" dir="{{ $isRtl ? 'rtl' : 'ltr' }}">
+<div
+
+    x-data="{ isMobile: window.innerWidth <= 768 }"
+    :class="isMobile ? 'space-x-0' : 'space-x-2'"
+    class="flex flex-row items-center "
+    dir="{{ $isRtl ? 'rtl' : 'ltr' }}"
+>
     <!-- Primeiro Grupo de 3 Inputs -->
-    <div class="flex items-center gap-1 md:gap-2 ">
+    <div class="flex items-center w-full gap-1 md:gap-2 ">
         @foreach(range(1, 3) as $column)
         <x-filament::input.wrapper
         :disabled="$isDisabled"
@@ -141,25 +147,25 @@
                     type="{{$inputType}}"
                     maxlength="1"
                     x-ref="{{$column}}"
-                     
+
                     autocomplete="{{$autocomplete}}"
-                    class="fi-input fi-otp-input responsive-input block w-full border-none  p-0 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
+                    class="block w-full p-0 text-lg leading-8 text-center transition duration-75 border-none fi-input fi-otp-input responsive-input text-gray-950 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 bg-white/0"
                     x-on:input="handleInput($event, {{$column}})"
                     x-on:paste="handlePaste($event)"
                     x-on:keydown.backspace="handleBackspace($event)"
                     x-on:keydown.enter="handleEnter($event)"
-                /> 
+                />
             </x-filament::input.wrapper>
         @endforeach
     </div>
 
     <!-- Traço Separador -->
-    <div class="text-gray-500 span-separete ">-</div>
+    <div class="text-gray-500 span-separete">-</div>
 
     <!-- Segundo Grupo de 3 Inputs -->
-    <div class="flex items-center gap-1 md:gap-2 ">
+    <div class="flex items-center w-full gap-1 md:gap-2 ">
         @foreach(range(4, 6) as $column)
-           
+
         <x-filament::input.wrapper
         :disabled="$isDisabled"
                 :inline-prefix="$isPrefixInline"
@@ -181,15 +187,15 @@
                 <input
                     {{$isDisabled ? 'disabled' : ''}}
                     type="{{$inputType}}"
-                    maxlength="1" 
+                    maxlength="1"
                     x-ref="{{$column}}"
                     autocomplete="{{$autocomplete}}"
-                    class="fi-input fi-otp-input responsive-input block w-full border-none p-0 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
+                    class="block w-full p-0 text-lg leading-8 text-center transition duration-75 border-none fi-input fi-otp-input responsive-input text-gray-950 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 bg-white/0"
                     x-on:input="handleInput($event, {{$column}})"
                     x-on:paste="handlePaste($event)"
                     x-on:keydown.backspace="handleBackspace($event)"
                     x-on:keydown.enter="handleEnter($event)"
-                /> 
+                />
             </x-filament::input.wrapper>
         @endforeach
     </div>
@@ -198,7 +204,7 @@
     <div class="text-gray-500 span-separete">-</div>
 
     <!-- Terceiro Grupo de 3 Inputs -->
-    <div class="flex items-center gap-1 md:gap-2">
+    <div class="flex items-center w-full gap-1 md:gap-2 ">
         @foreach(range(7, 9) as $column)
         <x-filament::input.wrapper
         :disabled="$isDisabled"
@@ -224,19 +230,19 @@
                     maxlength="1"
                     x-ref="{{$column}}"
                     autocomplete="{{$autocomplete}}"
-                     
-                    class="fi-input fi-otp-input responsive-input block w-full border-none  p-0 text-lg text-gray-950 transition duration-75 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 leading-8 bg-white/0 text-center"
+
+                    class="block w-full p-0 text-lg leading-8 text-center transition duration-75 border-none fi-input fi-otp-input responsive-input text-gray-950 placeholder:text-gray-400 focus:ring-0 disabled:text-gray-500 dark:text-white dark:placeholder:text-gray-500 bg-white/0"
                     x-on:input="handleInput($event, {{$column}})"
                     x-on:paste="handlePaste($event)"
                     x-on:keydown.backspace="handleBackspace($event)"
                     x-on:keydown.enter="handleEnter($event)"
-                /> 
+                />
             </x-filament::input.wrapper>
         @endforeach
     </div>
 </div>
 
-    
+
     </div>
 
 </x-dynamic-component>
@@ -258,21 +264,23 @@
     }
     .responsive-input {
         height: {{ $height ?? '40px' }};
-        width: {{ $width ?? '40px' }};
-        
+           width: 100%;
+    max-width: 45px; /* limite de largura por input */
+
     }
     .span-separete{
-            padding: 0 10px;
+            padding: 0 8px;
         }
     /* Estilos para dispositivos móveis (largura de tela de até 768px) */
     @media (max-width: 768px) {
         .span-separete{
-            padding: 0 5px;
+            padding: 0 3px;
         }
         .responsive-input {
            text-align: center; /* Centraliza o texto */
             height: 40px; /* Altura menor para dispositivos móveis */
             width:100%;  /* Largura menor para dispositivos móveis */
+            max-width: 36px; /* inputs menores no mobile */
             margin: 0 2px; /* Espaçamento para garantir alinhamento */
         }
     }
