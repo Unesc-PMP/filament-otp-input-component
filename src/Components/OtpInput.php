@@ -1,22 +1,25 @@
 <?php
 namespace HasanAhani\FilamentOtpInput\Components;
 
-use _PHPStan_11268e5ee\Nette\PhpGenerator\Closure;
-use Filament\Forms\Components\Actions\Action;
-use Filament\Forms\Components\Field;
-use Filament\Notifications\Notification;
+use Filament\Forms\Components\Concerns\CanBeAutocapitalized;
+use Filament\Forms\Components\Concerns\CanBeAutocompleted;
+use Filament\Forms\Components\Concerns\CanBeLengthConstrained as CanBeLengthConstrainedTrait;
+use Filament\Forms\Components\Concerns\CanBeReadOnly;
+use Filament\Forms\Components\Concerns\HasAffixes;
+use Filament\Forms\Components\Concerns\HasExtraInputAttributes;
+use Filament\Forms\Components\Contracts\CanBeLengthConstrained;
 use Filament\Support\Concerns\HasExtraAlpineAttributes;
-use Filament\Forms\Components\Concerns;
-use Filament\Forms\Components\Contracts;
+use Filament\Forms\Components\Field;
+use Filament\Schemas\Components\Contracts\HasAffixActions;
 
-class OtpInput extends Field implements Contracts\CanBeLengthConstrained, Contracts\HasAffixActions
+class OtpInput extends Field implements CanBeLengthConstrained, HasAffixActions
 {
-    use Concerns\CanBeAutocapitalized;
-    use Concerns\CanBeAutocompleted;
-    use Concerns\CanBeLengthConstrained;
-    use Concerns\CanBeReadOnly;
-    use Concerns\HasAffixes;
-    use Concerns\HasExtraInputAttributes;
+    use CanBeAutocapitalized;
+    use CanBeAutocompleted;
+    use CanBeLengthConstrainedTrait;
+    use CanBeReadOnly;
+    use HasAffixes;
+    use HasExtraInputAttributes;
     use HasExtraAlpineAttributes;
 
     protected string $view = 'filament-otp-input::components.otp-input';
